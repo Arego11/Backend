@@ -1,0 +1,55 @@
+/* styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    background-color: #1a202c;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.fade-in {
+    opacity: 0;
+}
+
+.game-card {
+    background: #2d3748;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.button-hover {
+    display: inline-block;
+    background: #ffbe0b;
+    color: black;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-hover:hover {
+    transform: scale(1.1);
+    background: #faa307;
+    box-shadow: 0px 4px 10px rgba(255, 190, 11, 0.3);
+}
+
+h1, h2, h3 {
+    color: #f4f4f4;
+}
+
+footer {
+    background: #2d3748;
+    color: white;
+    padding: 15px 0;
+    margin-top: 20px;
+}

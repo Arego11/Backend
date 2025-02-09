@@ -20,9 +20,14 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.log(err));
 
+const authRoutes = require("./routes/auth"); //import routes
+
+app.use("/api/auth", authRoutes); // use routes
+
+app.get("/", (req, res) => {
+    res.send("Server is running!");
+});
+
+
+app.listen(8080, () => console.log("Server running on port 8080"));
 // Start server
-app.listen(5000, () => console.log("Server running on port 5000"));
-
-const authRoutes = require("./routes/auth");
-
-app.use("/api/auth", authRoutes);

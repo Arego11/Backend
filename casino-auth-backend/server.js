@@ -1,4 +1,5 @@
-require("dotenv").config(); //This loads environment variables from .env file into process.env This allows sensitive information (like database credentials) to be kept outside the codebase, preventing security risks.
+require('dotenv').config(); //This loads environment variables from .env file into process.env This allows sensitive information (like database credentials) to be kept outside the codebase, preventing security risks.
+console.log(process.env.MONGO_URI);
 
 //importing packages
 const express = require("express"); // creates a web server

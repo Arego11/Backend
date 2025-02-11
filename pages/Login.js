@@ -1,4 +1,4 @@
-import { login } from "../services/authService";
+import { login } from "../api/services/authService";
 import { useState } from "react";
 
 function Login() {

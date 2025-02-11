@@ -1,7 +1,7 @@
-import { signup } from "../services/authService";
+import { signup } from "../api/services/authService";
 import { useState } from "react";
 
-function signup() {
+function Signup() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

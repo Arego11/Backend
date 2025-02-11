@@ -1,6 +1,6 @@
 const express = require("express");
-const { findUserByEmail, comparePasswords, generateToken } = require("../../utils/authUtils");
-const { generateSalt, hashPassword } = require("../../utils/passwordUtils");
+const { findUserByEmail, generateToken } = require("../../utils/authUtils");
+const { generateSalt, hashPassword, comparePasswords } = require("../../utils/passwordUtils");
 const User = require("../../models/User"); // Ensure User model is imported
 
 const router = express.Router();
@@ -36,10 +36,10 @@ router.post("/login", async (req, res) => {
         console.log("Login request received:", { email, password });
 
         let user = await findUserByEmail(email);
-        if (!user) return res.status(400).json({ message: "Invalid credentials" });
+        if (!user) return res.status(400).json({ message: "Invalid email credentials" });
 
         const isMatch = await comparePasswords(password, user.password);
-        if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
+        if (!isMatch) return res.status(400).json({ message: "Invalid password credentials" });
 
         const token = generateToken(user._id);
 

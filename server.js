@@ -8,13 +8,12 @@ const mongoose = require("mongoose"); // Connects and manages the MongoDB databa
 
 // Creates express.js app
 const app = express(); // This is a tool to connect middleware, handle requests, refine routes
+//middleware for cors and json
 app.use(cors()); // Allows external clients to access the server
 app.use(express.json()); // Parses incoming JSON request bodies automatically and creates a JS data structure
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
-    serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
-    socketTimeoutMS: 45000 // Increase socket timeout to 45 seconds
 })
     .then(() => {
         console.log("Connected to MongoDB");

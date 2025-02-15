@@ -11,8 +11,13 @@ router.post("/signup", async (req, res) => {
 
         console.log("Signup request received:", { username, email, password });
 
+        // Check if a user with the same email exists
         let user = await findUserByEmail(email);
-        if (user) return res.status(400).json({ message: "User already exists" });
+        if (user) return res.status(400).json({ message: "User with this email already exists" });
+
+        // Check if a user with the same username exists
+        user = await User.findOne({ username });
+        if (user) return res.status(400).json({ message: "Username taken" });
 
         const salt = await generateSalt();
         const hashedPassword = await hashPassword(password, salt);

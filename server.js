@@ -12,16 +12,14 @@ const app = express(); // This is a tool to connect middleware, handle requests,
 app.use(cors()); // Allows external clients to access the server
 app.use(express.json()); // Parses incoming JSON request bodies automatically and creates a JS data structure
 
-// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
 })
     .then(() => {
         console.log("Connected to MongoDB");
 
-        // Import routes
         const authRoutes = require("./api/routes/auth"); // Update the path to reflect the new structure
 
-        // Use routes
+        // this is how you use the routes
         app.use("/api/auth", authRoutes);
 
         app.get("/", (req, res) => {

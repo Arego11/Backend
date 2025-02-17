@@ -15,8 +15,6 @@ app.use(express.json()); // Parses incoming JSON request bodies automatically an
 mongoose.connect(process.env.MONGO_URI, {
 })
     .then(() => {
-        console.log("Connected to MongoDB");
-
         const authRoutes = require("./api/routes/auth"); // Update the path to reflect the new structure
 
         // this is how you use the routes
@@ -28,6 +26,8 @@ mongoose.connect(process.env.MONGO_URI, {
 
         const PORT = process.env.PORT || 8080;
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+        console.log("Connected to MongoDB");
     })
     .catch(err => {
         console.log("Error connecting to MongoDB:", err);

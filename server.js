@@ -1,7 +1,6 @@
 require('dotenv').config(); // This loads environment variables from .env file into process.env.
 console.log("MONGO_URI:", process.env.MONGO_URI); // Add this line to check if MONGO_URI is loaded
 
-// Importing packages
 const express = require("express"); // Creates a web server
 const cors = require("cors"); // This is good for preventing malicious attacks that can be directed to your website. It can also allow requests from different origins.
 const mongoose = require("mongoose"); // Connects and manages the MongoDB database

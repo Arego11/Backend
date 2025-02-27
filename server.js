@@ -27,16 +27,22 @@ mongoose.connect(process.env.MONGO_URI, {})
               },
               {
                 headers : {
-                  'Authorization' : `Bearer ${
-                      process.env.LLAMA_API_KEY}`, 
+                  'Authorization' : `Bearer ${process.env.LLAMA_API_KEY}`,
                   'Content-Type' : 'application/json',
                 },
               });
 
-          const botResponse = response.data.choices[0].text.trim();
-          res.json({response : botResponse});
+          if (response.data && response.data.choices &&
+              response.data.choices.length > 0) {
+            const botResponse = response.data.choices[0].text.trim();
+            res.json({response : botResponse});
+          } else {
+            console.error('Invalid response structure:', response.data);
+            res.status(500).json(
+                {response : 'Invalid response structure from AI.'});
+          }
         } catch (error) {
-          console.error('Error communicating with AI:', error);
+          console.error('Error communicating with AI:',error.response ? error.response.data : error.message);
           res.status(500).json({response : 'Error communicating with AI.'});
         }
       });

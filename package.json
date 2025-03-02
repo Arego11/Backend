@@ -20,9 +20,9 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
+    "node-fetch": "^3.3.2",
     "openai": "^4.85.2",
-    "socket.io": "^4.8.1",
-    "node-fetch": "^3.0.0"
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

@@ -20,10 +20,16 @@ mongoose.connect(process.env.MONGO_URI, {})
         const userMessage = req.body.message;
 
         try {
+          console.log('Sending request to LLaMA API with message:',
+                      userMessage); // Log the message being sent
           const response = await axios.post(
-              'https://api.llama.ai/v1/engines/llama-2/completions', {
-                prompt : userMessage,
-                max_tokens : 150,
+              'https://api.llama-api.com/v1/chat/completions', {
+                messages : [
+                  {role : "system", content : "You are a helpful assistant."},
+                  {role : "user", content : userMessage}
+                ],
+                model : "llama-2",
+                stream : false
               },
               {
                 headers : {
@@ -34,7 +40,8 @@ mongoose.connect(process.env.MONGO_URI, {})
 
           if (response.data && response.data.choices &&
               response.data.choices.length > 0) {
-            const botResponse = response.data.choices[0].text.trim();
+            const botResponse = response.data.choices[0].message.content.trim();
+            console.log('Received response from LLaMA API:',botResponse); // Log the response from the API
             res.json({response : botResponse});
           } else {
             console.error('Invalid response structure:', response.data);

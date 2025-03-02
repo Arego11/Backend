@@ -22,7 +22,7 @@
     "mongoose": "^8.10.0",
     "openai": "^4.85.2",
     "socket.io": "^4.8.1",
-    "nodefetch": "^3.0.0"
+    "node-fetch": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
